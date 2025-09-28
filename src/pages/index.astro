@@ -5,15 +5,17 @@ import RicePfp from '@lib/assets/rice_pfp.png';
 
 <Layout title="ricedev.me">
   <header class="window relative mt-4">
-    <p class="absolute right-4 bottom-4 text-sm">made with {Astro.generator} 🔥</p>
-
-    <div class="window-titlebar">
+    <header class="window-titlebar">
       <h1>uheeeeeeeeeeeeeeeeeeeee~~~</h1>
-    </div>
+    </header>
 
-    <div class="flex gap-16 p-16">
-      <img src={RicePfp.src} alt="my profile picture" class="size-64 rounded-full" />
-      <div>
+    <section class="flex flex-col items-center gap-16 p-4 lg:flex-row lg:items-start lg:p-16">
+      <img
+        src={RicePfp.src}
+        alt="my profile picture"
+        class="size-48 items-center rounded-full lg:size-64"
+      />
+      <div class="w-full">
         <h1 class="text-ctp-blue font-bold">rice-cracker-dev@ricedev.me</h1>
         <hr class="border-ctp-text my-2" />
         <p>
@@ -22,6 +24,10 @@ import RicePfp from '@lib/assets/rice_pfp.png';
         </p>
         <p class="text-ctp-yellow">!! this site is under construction !!</p>
       </div>
-    </div>
+    </section>
+
+    <footer class="relative m-4 text-sm lg:absolute lg:right-0 lg:bottom-0">
+      made with {Astro.generator} 🔥
+    </footer>
   </header>
 </Layout>
