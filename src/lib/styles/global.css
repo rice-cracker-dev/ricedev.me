@@ -1,0 +1,25 @@
+@import 'tailwindcss';
+@import '@catppuccin/tailwindcss/macchiato.css';
+
+@layer base {
+  html,
+  body {
+    @apply bg-ctp-base text-ctp-text m-0 p-0;
+
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer components {
+  .anchor {
+    @apply text-ctp-blue visited:text-ctp-mauve underline-offset-2 hover:underline;
+  }
+
+  .window {
+    @apply border-ctp-text flex flex-col border;
+  }
+
+  .window-titlebar {
+    @apply bg-ctp-text text-ctp-base flex items-center gap-4 p-1 font-bold;
+  }
+}

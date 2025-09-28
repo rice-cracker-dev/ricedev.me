@@ -1,0 +1,14 @@
+---
+const currentPath = Astro.url.pathname;
+const path = '~/ricedev.me' + (currentPath === '/' ? '' : currentPath);
+---
+
+<header class="mt-16">
+  <nav class="flex items-center justify-end gap-4">
+    <h1 class="flex-1">{path}</h1>
+
+    <a href="/" class="anchor">home</a>
+    <a href="/blogs" class="anchor">blogs</a>
+    <a href="https://github.com/rice-cracker-dev" class="anchor">github</a>
+  </nav>
+</header>
