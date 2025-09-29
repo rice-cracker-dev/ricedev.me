@@ -1,0 +1,55 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '@lib/layouts/Layout.astro';
+import BlogLinkContent from './(components)/BlogLinkContent.astro';
+
+export const getStaticPaths = async () => {
+  const blogs = await getCollection('blogs');
+
+  const latestBlogs = blogs
+    .sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime())
+    .slice(0, 5);
+
+  return blogs.map((blog) => ({
+    params: { id: blog.id },
+    props: { blog, latestBlogs },
+  }));
+};
+
+const { blog, latestBlogs } = Astro.props;
+const { Content } = await render(blog);
+---
+
+<Layout title={blog.data.title}>
+  <div class="mt-4 flex flex-col gap-4 lg:flex-row">
+    <article class="window flex-1">
+      <header class="window-titlebar">
+        <h1>{blog.data.title}</h1>
+      </header>
+
+      <section class="prose prose-invert !max-w-none p-4">
+        <Content />
+      </section>
+    </article>
+
+    <aside class="max-w-72">
+      <header class="font-bold">my other blogs</header>
+      <section class="mt-2 flex w-full flex-col">
+        {
+          latestBlogs.map((b) =>
+            blog.id === b.id ? (
+              <p class="truncate">
+                <span>&gt;</span>
+                <BlogLinkContent blog={b} />
+              </p>
+            ) : (
+              <a href={`/blogs/${b.id}`} class="anchor w-full truncate">
+                <BlogLinkContent blog={b} />
+              </a>
+            ),
+          )
+        }
+      </section>
+    </aside>
+  </div>
+</Layout>

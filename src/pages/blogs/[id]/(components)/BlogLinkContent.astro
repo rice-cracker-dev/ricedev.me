@@ -1,0 +1,13 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { format } from 'date-fns';
+
+interface Props {
+  blog: CollectionEntry<'blogs'>;
+}
+
+const { blog } = Astro.props;
+---
+
+<span>{blog.data.title}</span>
+<span class="opacity-50">({format(blog.data.publishedAt, 'P')})</span>

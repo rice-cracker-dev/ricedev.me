@@ -1,5 +1,6 @@
 @import 'tailwindcss';
 @import '@catppuccin/tailwindcss/macchiato.css';
+@plugin '@tailwindcss/typography';
 
 @layer base {
   html,

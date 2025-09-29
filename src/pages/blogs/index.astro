@@ -1,0 +1,22 @@
+---
+import Layout from '@lib/layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import { format } from 'date-fns';
+
+const blogs = await getCollection('blogs');
+---
+
+<Layout title="my blogs">
+  <ul class="mt-4 flex flex-col">
+    {
+      blogs.map((blog) => (
+        <li class="truncate">
+          <a href={`/blogs/${blog.id}`} class="anchor">
+            <span>{blog.data.title}</span>
+            <span class="opacity-50">{format(blog.data.publishedAt, 'P')}</span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</Layout>
