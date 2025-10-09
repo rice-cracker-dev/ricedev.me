@@ -21,7 +21,7 @@ const { Content } = await render(blog);
 ---
 
 <Layout title={blog.data.title}>
-  <div class="mt-4 flex flex-col gap-4 lg:flex-row">
+  <div class="mt-4 flex flex-row gap-4">
     <article class="window flex-1">
       <header class="window-titlebar">
         <h1>{blog.data.title}</h1>
@@ -33,8 +33,8 @@ const { Content } = await render(blog);
     </article>
 
     <aside class="max-w-72">
-      <header class="font-bold">my other blogs</header>
-      <section class="mt-2 flex w-full flex-col">
+      <header class="">my other blogs</header>
+      <section class="flex w-full flex-col">
         {
           latestBlogs.map((b) =>
             blog.id === b.id ? (

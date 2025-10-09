@@ -5,7 +5,16 @@ const path = '~/ricedev.me' + (currentPath === '/' ? '' : currentPath);
 
 <header class="mt-16">
   <nav class="flex items-center justify-end gap-4">
-    <h1 class="hidden flex-1 sm:inline">cat {path}</h1>
+    <h1 class="hidden flex-1 font-bold sm:inline">
+      &dollar; cat
+      <span
+        class={Astro.response.status && Astro.response.status <= 400
+          ? 'text-ctp-green'
+          : 'text-ctp-red'}
+      >
+        {path}
+      </span>
+    </h1>
 
     <div class="mx-auto flex items-center gap-4 sm:mx-0">
       <a href="/" class="anchor">home</a>
